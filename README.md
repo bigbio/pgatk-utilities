@@ -1,4 +1,4 @@
-# PRIDE-Mod Library
+# pgatk utilities library
 
 
 Pgatk utilities library is a Java API to handle post-translational modifications (PTMs) in proteomics experiments. The library provide a common representation between different PTMs databases such as [UNIMOD](www.ebi.ac.uk/pride/archive/) , [PSI-MOD](http://www.psidev.info/MOD) and the PRIDE Modification Slim Ontology.
