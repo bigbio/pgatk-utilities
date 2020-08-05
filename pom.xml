@@ -228,9 +228,9 @@
     </distributionManagement>
 
     <scm>
-        <connection>scm:git:https://github.com/bigbio/pgatk-mod.git</connection>
-        <developerConnection>scm:git:https://github.com/bigbio/pgatk-mod.git</developerConnection>
-        <url>https://github.com/bigbio/pgatk-mod.git</url>
+        <connection>scm:git:https://github.com/bigbio/pgatk-utilities.git</connection>
+        <developerConnection>scm:git:https://github.com/bigbio/pgatk-utilities.git</developerConnection>
+        <url>https://github.com/bigbio/pgatk-utilities.git</url>
         <tag>HEAD</tag>
     </scm>
 
