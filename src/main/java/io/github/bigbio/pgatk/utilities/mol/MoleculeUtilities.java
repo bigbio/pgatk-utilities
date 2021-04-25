@@ -4,6 +4,7 @@ import io.github.bigbio.pgatk.utilities.exception.IllegalAminoAcidSequenceExcept
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static io.github.bigbio.pgatk.utilities.mol.NeutralLoss.WATER_LOSS;
 import static io.github.bigbio.pgatk.utilities.mol.NuclearParticle.PROTON;
@@ -308,6 +309,49 @@ public class MoleculeUtilities {
 
         sequence = sequence.replaceAll("[K|R]", "");
         return initialLength - sequence.length();
+    }
+
+
+    /**
+     * This method encode the a peptide and the corresponding PTMs as peptidoforms
+     * (https://www.psidev.info/proforma). Some examples:
+     *
+     * - [iTRAQ4plex]-EMEVNESPEK-[Methyl]
+     * - EM[L-methionine sulfoxide]EVEES[O-phospho-L-serine]PEK
+     *
+     * Currently, the representation only allow 1 PTM per position.
+     *
+     * @param sequence Peptide Sequence
+     * @param ptms PTMs map Localization, PTM name or Accession, or delta mass
+     * @return String peptidoform
+     */
+    public static String encodePeptidoform(String sequence, Map<Integer, String> ptms) {
+        StringBuilder stringBuilder = new StringBuilder();
+        String finalSequence = sequence;
+        if (ptms != null && ptms.size() > 0) {
+            char[] sequenceList = sequence.toCharArray();
+            if (ptms.containsKey(0))
+                stringBuilder.append("[").append(ptms.get(0)).append("]");
+            for (int i = 0; i < sequenceList.length; i++) {
+                stringBuilder.append(sequenceList[i]);
+                if (ptms.containsKey(i + 1)) {
+                    stringBuilder.append("[").append(ptms.get(i + 1)).append("]");
+                }
+            }
+
+            // Add the CTerm modifications
+            for (Map.Entry entry : ptms.entrySet()) {
+                Integer position = (Integer) entry.getKey();
+                String mod = (String) entry.getValue();
+                if (position > sequence.length()) {
+                    stringBuilder.append("-").append("[").append(mod).append("]");
+                }
+            }
+            finalSequence = stringBuilder.toString();
+        }
+
+        return finalSequence;
+
     }
 
 
