@@ -4,6 +4,7 @@ package io.github.bigbio.pgatk.utilities.term;
 public enum SampleCvTermReference {
 
     EFO_ORGANISM_PART("EFO", "EFO:0000635", "organism part", null),
+    MS_PROTEOMEXCHANGE_ACCESSION("MS", "MS:1001919", "ProteomeXchange accession number", null),
     EFO_ORGANISM("EFO", "OBI:0100026", "organism", null);
 
 
