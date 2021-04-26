@@ -331,7 +331,7 @@ public class MoleculeUtilities {
         if (ptms != null && ptms.size() > 0) {
             char[] sequenceList = sequence.toCharArray();
             if (ptms.containsKey(0))
-                stringBuilder.append("[").append(ptms.get(0)).append("]");
+                stringBuilder.append("[").append(ptms.get(0)).append("]-");
             for (int i = 0; i < sequenceList.length; i++) {
                 stringBuilder.append(sequenceList[i]);
                 if (ptms.containsKey(i + 1)) {
