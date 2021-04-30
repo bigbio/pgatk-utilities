@@ -120,8 +120,7 @@ public class SpectraUtilities {
     Number[] values = convertData(originalValues);
 
     List<Double> resultValues = new ArrayList<>(values.length);
-    for(int i =0; i < values.length; i++)
-      resultValues.add(values[i].doubleValue());
+    for (Number value : values) resultValues.add(value.doubleValue());
 
     return resultValues;
   }
